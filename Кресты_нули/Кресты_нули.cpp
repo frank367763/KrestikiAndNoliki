@@ -59,3 +59,35 @@ void makeMove(char player) {
 void resetBoard() {
     board = vector<vector<char>>(SIZE, vector<char>(SIZE, ' '));
 }
+
+int main() {
+    char currentPlayer = 'X';
+    char winner = ' ';
+    char playAgain;
+
+    do {
+        resetBoard();
+        winner = ' ';
+        while (winner == ' ') {
+            displayBoard();
+            makeMove(currentPlayer);
+            winner = checkWinner();
+            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+        }
+
+        displayBoard();
+
+        if (winner == 'D') {
+            cout << "Игра завершилась ничьей!" << endl;
+        }
+        else {
+            cout << "Игрок " << ((currentPlayer == 'X') ? 'O' : 'X') << " победил!" << endl;
+        }
+
+        cout << "Хотите сыграть снова? (y/n): ";
+        cin >> playAgain;
+
+    } while (playAgain == 'y' || playAgain == 'Y');
+
+    return 0;
+}
