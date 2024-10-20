@@ -20,3 +20,28 @@ void displayBoard() {
 bool isValidMove(int row, int col) {
     return row >= 0 && row < SIZE && col >= 0 && col < SIZE && board[row][col] == ' ';
 }
+
+char checkWinner() {
+    // Проверка строк и столбцов
+    for (int i = 0; i < SIZE; ++i) {
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ')
+            return board[i][0];
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' ')
+            return board[0][i];
+    }
+
+    // Проверка диагоналей
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ')
+        return board[0][0];
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' ')
+        return board[0][2];
+
+    // Проверка на ничью
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            if (board[i][j] == ' ') return ' '; // Игра продолжается
+        }
+    }
+
+    return 'D'; // Ничья (Draw)
+}
