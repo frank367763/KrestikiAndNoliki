@@ -45,3 +45,13 @@ char checkWinner() {
 
     return 'D'; // Ничья (Draw)
 }
+
+void makeMove(char player) {
+    int row, col;
+    do {
+        cout << "Игрок " << player << ", введите номер строки и столбца (0-2): ";
+        cin >> row >> col;
+    } while (!isValidMove(row, col));
+
+    board[row][col] = player;
+}
