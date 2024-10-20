@@ -61,6 +61,7 @@ void resetBoard() {
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
     char currentPlayer = 'X';
     char winner = ' ';
     char playAgain;
