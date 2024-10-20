@@ -55,3 +55,7 @@ void makeMove(char player) {
 
     board[row][col] = player;
 }
+
+void resetBoard() {
+    board = vector<vector<char>>(SIZE, vector<char>(SIZE, ' '));
+}
