@@ -16,3 +16,7 @@ void displayBoard() {
         if (i < SIZE - 1) cout << "--+---+--" << endl;
     }
 }
+
+bool isValidMove(int row, int col) {
+    return row >= 0 && row < SIZE && col >= 0 && col < SIZE && board[row][col] == ' ';
+}
